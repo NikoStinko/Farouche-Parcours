@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G1427" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CheckPoint" representedClassName=".CheckPointMO" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="label" optional="YES" attributeType="String"/>
+        <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="son_trajet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trajet" inverseName="ses_checkpoints" inverseEntity="Trajet"/>
+    </entity>
+    <entity name="Trajet" representedClassName=".TrajetMO" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="label" optional="YES" attributeType="String"/>
+        <attribute name="nom" optional="YES" attributeType="String"/>
+        <attribute name="sesCheckPoints" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="ses_checkpoints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CheckPoint" inverseName="son_trajet" inverseEntity="CheckPoint"/>
+        <relationship name="son_utilisateur" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Utilisateur" inverseName="ses_trajets" inverseEntity="Utilisateur"/>
+    </entity>
+    <entity name="Utilisateur" representedClassName=".UtilisateurMO" syncable="YES">
+        <attribute name="mdp" optional="YES" attributeType="String"/>
+        <attribute name="nom" optional="YES" attributeType="String"/>
+        <attribute name="prenom" optional="YES" attributeType="String"/>
+        <attribute name="pseudo" optional="YES" attributeType="String"/>
+        <attribute name="sesTrajets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="sa_voiture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Voiture" inverseName="son_utilisateur" inverseEntity="Voiture"/>
+        <relationship name="ses_trajets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trajet" inverseName="son_utilisateur" inverseEntity="Trajet"/>
+    </entity>
+    <entity name="Voiture" representedClassName=".VoitureMO" syncable="YES">
+        <attribute name="couleur" optional="YES" attributeType="String"/>
+        <attribute name="idVoiture" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="marque" optional="YES" attributeType="String"/>
+        <attribute name="nom" optional="YES" attributeType="String"/>
+        <relationship name="son_utilisateur" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Utilisateur" inverseName="sa_voiture" inverseEntity="Utilisateur"/>
+    </entity>
+    <elements>
+        <element name="CheckPoint" positionX="-241.0421752929688" positionY="73.74160766601565" width="128" height="118"/>
+        <element name="Trajet" positionX="-252.034423828125" positionY="-77.50607299804688" width="128" height="133"/>
+        <element name="Utilisateur" positionX="-77.59344482421875" positionY="-169.49462890625" width="128" height="148"/>
+        <element name="Voiture" positionX="77.9149169921875" positionY="76.17340087890625" width="128" height="118"/>
+    </elements>
+</model>
